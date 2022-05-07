@@ -1,1 +1,19 @@
-exceed runtime
+class Solution:
+    def removeDuplicates(self, s: str, k: int) -> str:
+        while 1:
+            temp=False
+            delete=[]
+            for x in range(0,len(s)-k+1):
+                for y in range(1,k):
+                    if s[x]==s[x+y]:
+                        if y==k-1:
+                            delete.append(s[x])
+                            x+=2
+                            temp=True
+                    else:
+                        break
+
+            for x in delete:
+                s=s.replace(x*k, "")
+            if temp==False:
+                return s
