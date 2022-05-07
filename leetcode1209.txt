@@ -17,3 +17,20 @@ class Solution:
                 s=s.replace(x*k, "")
             if temp==False:
                 return s
+
+#stack solution from neetcode
+        stack=[] #[char, count]
+        
+        for x in s:
+            if stack and stack[-1][0]==x:
+                stack[-1][1]+=1
+            else:
+                stack.append([x,1])
+            
+            if stack[-1][1]==k:
+                stack.pop()
+                
+        ans=""
+        for x in stack:
+            ans+=x[0]*x[1]
+        return ans
